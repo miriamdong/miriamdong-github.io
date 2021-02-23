@@ -39,14 +39,20 @@ $( function () {
 
   function showinfo() {
     $( this ).toggleClass( 'a' );
+    $( this ).toggleClass( 'unselected' );
+  }
+
+  function whenLeave() {
+
   }
 
   function whenClick() {
+    $( this ).removeClass( 'unselected' ).siblings().addClass( 'unselected' );
     $( this ).append( '<span class="count"></span>' );
     $( this ).css( 'width', $( this ).attr( 'data-percent' ) );
-
     $( '.count' ).each( function () {
       $( this ).prop( 'Counter', 0 ).animate( {
+
         Counter: $( this ).parent( '.bar' ).attr( 'data-percent' )
       }, {
         duration: 1000,
@@ -56,6 +62,5 @@ $( function () {
         }
       } );
     } );
-
   }
 } );
