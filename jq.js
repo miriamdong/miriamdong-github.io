@@ -49,20 +49,25 @@ $( function () {
 
     $( this ).removeClass( 'unselected' ).siblings().addClass( 'unselected' );
     $( this ).css( 'width', $( this ).attr( 'data-percent' ) );
-    $( this ).append( '<span class="count"></span>' );
     $( this ).siblings().animate( {
-        'width': '0px'
-      }, 0 )
-      ( '.count' ).prop( 'Counter', 0 ).animate( {
+      'width': '0px'
+    }, 0 )
 
+    $( this ).append( '<span class="count"></span>' );
+    $( '.count' ).each( function () {
+      $( this ).prop( 'Counter', 0 ).animate( {
         Counter: $( this ).parent( '.bar' ).attr( 'data-percent' )
       }, {
-        duration: 1000,
+        duration: 2000,
         easing: 'swing',
         step: function ( now ) {
           $( this ).text( Math.ceil( now ) + '%' );
         }
       } );
+    } );
+
+
+
 
   }
 
